@@ -1,0 +1,16 @@
+#!/usr/bin/env php
+<?php
+/**
+ * Entry point for the image storage app
+ *
+ * PHP version 7.4
+ * @author        Ollie Lowson ( @ollielowson )
+ */
+
+// Created using PhpStorm
+
+namespace OllieLowson\StorageDemo;
+
+require __DIR__.'/../vendor/autoload.php';
+
+echo '안녕!' . PHP_EOL;
