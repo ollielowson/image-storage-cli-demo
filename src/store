@@ -9,14 +9,18 @@
 
 // Created using PhpStorm
 
-namespace OllieLowson\StorageDemo;
+namespace Ollielowson\StorageDemo;
 
-use Dotenv\Dotenv;
+use Composer\InstalledVersions;
+use Ollielowson\StorageDemo\Command\Greet;
+use Symfony\Component\Console\Application;
 
-// Enable composer PSR-4 autoloading
-require __DIR__ . '/../vendor/autoload.php';
+// Bootstrap the app
+require __DIR__ . '/../bootstrap/autoload.php';
 
-// Load environment config
-$dotenv = Dotenv::createImmutable(__DIR__ . '/..');
-$dotenv->safeLoad();
-echo $_ENV['GREETING'] . PHP_EOL;
+// Load Symfony app
+$app = new Application('Image Storage Demo', InstalledVersions::getRootPackage()['pretty_version']);
+
+$app->add(new Greet());
+
+$app->run();
