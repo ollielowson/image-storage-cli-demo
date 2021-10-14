@@ -11,6 +11,7 @@
 
 namespace Ollielowson\StorageDemo\Command;
 
+use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\ArgvInput;
@@ -20,14 +21,18 @@ use Symfony\Component\Console\Tester\CommandTester;
 
 class GreetTest extends TestCase
 {
+    use MockeryPHPUnitIntegration;
+
     /** @test */
     public function itGreetsTheUser()
     {
         // Given
         $input = new ArgvInput([]);
         $output = \Mockery::mock(OutputInterface::class);
-        $output->shouldReceive('writeLn');
         $greet = new Greet();
+
+        // expect
+        $output->shouldReceive('writeLn')->once();
 
         // when
         $result = $greet->run($input, $output);
