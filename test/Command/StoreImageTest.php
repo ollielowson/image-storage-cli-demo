@@ -19,6 +19,7 @@ use Ollielowson\StorageDemo\Command\StoreImage;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\ArgvInput;
+use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class StoreImageTest extends TestCase
@@ -29,12 +30,12 @@ class StoreImageTest extends TestCase
     public function itExecutesWithProvidedFilename()
     {
         // Given
-        $input = new ArgvInput(['filename' => 'FILENAME']);
+        $input = new ArrayInput(['filename' => 'no-more-catnip.png']);
         $output = \Mockery::mock(OutputInterface::class);
         $storeImage = new StoreImage();
 
         // expect
-
+        $output->shouldReceive('writeLn');
 
         // when
         $result = $storeImage->run($input, $output);

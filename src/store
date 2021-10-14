@@ -13,6 +13,7 @@ namespace Ollielowson\StorageDemo;
 
 use Composer\InstalledVersions;
 use Ollielowson\StorageDemo\Command\Greet;
+use Ollielowson\StorageDemo\Command\StoreImage;
 use Symfony\Component\Console\Application;
 
 // Bootstrap the app
@@ -22,5 +23,6 @@ require __DIR__ . '/../bootstrap/autoload.php';
 $app = new Application('Image Storage Demo', InstalledVersions::getRootPackage()['pretty_version']);
 
 $app->add(new Greet());
+$app->add(new StoreImage());
 
 $app->run();
